@@ -9,6 +9,15 @@ import os
 import json
 
 
+def opener(filename):
+    f = open(filename,'rb')
+    if (f.read(2) == '\x1f\x8b'):
+        f.seek(0)
+        return gzip.GzipFile(fileobj=f)
+    else:
+        f.seek(0)
+        return f
+
 def read_yelp_data(path):
     """Reads Yelp data, formats, and adds a dummy category attribute (for cons).
 
@@ -130,7 +139,7 @@ def write_group_to_csv(out_file_path, units, sep="\t"):
 
 
 def parse(path):
-    g = gzip.open(path, 'rb')
+    g = opener(path, 'rb')
     for l in g:
         yield eval(l)
 

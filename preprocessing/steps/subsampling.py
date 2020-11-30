@@ -110,10 +110,11 @@ class Subsample(Task):
         subs_units_max_count = 0
 
         for group_id, group_units in group_id_to_units.items():
-            if len(group_units) < perc:
+            if len(group_units) < perc or perc==1.:
 
                 # making sure that the subsampled number of reviews does not
-                # exceed a threshold
+                # exceed a threshold unless most of the businesses only have 
+                # one review
                 if self.max_total_revs is not None \
                         and (subs_units_count + len(
                     group_units)) > self.max_total_revs:

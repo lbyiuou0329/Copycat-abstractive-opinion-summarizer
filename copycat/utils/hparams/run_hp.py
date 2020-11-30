@@ -16,14 +16,14 @@ class RunHP(BaseHP):
         #   GENERAL  #
         self.seed = 42
         self.cuda_device_id = 6
-        self.device = 'cuda'  # 'cuda' or 'cpu'
+        self.device = 'cpu'  # 'cuda' or 'cpu'
         self.training_logging_step = 50  # how often to print internal metrics
         self.epochs = 10  # if set to 0 will immediately just to evaluation
         self.learning_rate = 0.0005
         self.grads_clip = 0.25
 
         # GENERAL DATA RELATED #
-        self.dataset = 'amazon'
+        self.dataset = 'yelp'
         self.train_max_groups_per_batch = 6
         self.val_max_groups_per_batch = 13
         self.eval_max_groups_per_batch = 20
